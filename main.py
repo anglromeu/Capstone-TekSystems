@@ -1,47 +1,44 @@
-"""
-#Github help
+#!/usr/bin/env python3
 
-  # the git command (may have to specify "/usr/bin/git" for example)
-git: git
+import openpyxl
+import pandas as pd
+import xlsxwriter
+import xlrd
+import os
+import csv
 
-# the temp directory that sync will use for cloning
-tmp: tmp-sync
-
-# set to true to stop subsequent cloning upon failing to clone any repository 
-abort-on-failure: false
-
-# the list of repositories to clone, in the order provided
-repositories:
-
-# this will clone the specified repo with the branch dev into the working directory
-- url: git@github.com:thekeenant/repo1.git
-  branch: master
-  target: ./
-
-# this will clone the specified repo with the branch dev into ./repo2-copy
-- url: git@github.com:thekeenant/repo2.git
-  branch: dev
-  target: ./repo2-copy
-"""
-
-
-#import pandas
-#import xlswriter
-#import os
 
 #main(excel sheet)
   #Output a sorted excel sheet by platoons (groups), using define parameters (age, sex)
+def main():
+#Read excel file from generated report
+  original = pd.read_excel('list_10.xlsx')
+#print (original)
 
-#Read excel sheet from generated report
-  #use pandas library to import file and read excel file
+#Convert excel to csv
+  original.to_csv('list_10.csv',
+                index = None,
+                header = True)
+  original_csv = pd.DataFrame(pd.read_csv('list_10.csv'))
+#print(original_csv)
+
+#Create a one list for each row
+  with open("list_10.csv") as f:
+    reader = csv.reader(f)
+    original_list = list(reader)
+#print(original_list)
 
 #Ask user for number of "platoons"
-  #input("How many platoons? ")
-  #assign a list variable based on int input
-  #Platoon 1, Platoon 2, Platoon 3, etc
+  platoons = int(input('How many Basic Training Platoons?\n'))
 
-#create age group empty list
-  #group ie 13-14, 15-16, 17
+#Creat list for each age group
+  #thirteen = 13-14
+  #fifteen = 15-16
+  #seventeen = 17
+  thirteen = []
+  fifteen = []
+  seventeen = []
+
 
 #Search age column and add each line of infromation from exel to appropriate age group
   #use regex to achive this
@@ -70,8 +67,6 @@ repositories:
 
 
 
-#TODO Create excel sheet data with names, age and sex
-  #considering mockaroo.com
 #TODO test scripts for each function need to be created
 #TODO ensure PEP8 compliance
   #consider automating this task
