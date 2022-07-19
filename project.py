@@ -194,7 +194,7 @@ def female_count():
 
 
 # Main script area
-if __name__ == "__project__":
+if __name__ == "__main__":
     # Use previously created function to make the rows lists
     result = make_list()
     #print(result)
