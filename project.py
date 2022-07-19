@@ -180,3 +180,72 @@ def divide_into_platoons(thirteen, fifteen, seventeen, females):
    
     #print(females)  
     return platoon_list
+
+#Advise the user if max capacity for females is reached
+#Return a count of how many female bunks are needed  
+def female_count():
+    female_bunks = str(len(females))
+    if int(female_bunks) > 100:
+      print("Max capacity reached at 100")
+    else:        
+      print("Female bunks needed at Eagle's Landing: " + female_bunks)
+    
+  
+
+
+# Main script area
+if __name__ == "__main__":
+    # Use previously created function to make the rows lists
+    result = make_list()
+    #print(result)
+    result.pop(0)
+    print(f"Number of Candidates dividing: {len(result)}")
+    
+    # Creat list for each age group
+    # thirteen = 13-14
+    # fifteen = 15-16
+    # seventeen = 17
+    thirteen = []
+    fifteen = []
+    seventeen = []
+    females = []
+  
+    for row in result:
+      if row[3] == 'Female':
+        females.append(row)
+
+    for row in females:
+      if row[3] == 'Female':
+        result.remove(row)
+        
+    female_count()       
+    # Iterate through each row, and add to the appropriate lists
+    for row in result:
+      if row[2] == 'Age' or row[2] == 'age':
+        pass
+      elif int(row[2]) == 13 or int(row[2]) == 14:
+        thirteen.append(row)
+      elif int(row[2]) == 15 or int(row[2]) == 16:
+        fifteen.append(row)
+      elif int(row[2]) == 17:        
+        seventeen.append(row)
+      
+      #print(result) 
+          
+    # Shuffle our lists prior to dividing
+    random.shuffle(thirteen)
+    random.shuffle(fifteen)
+    random.shuffle(seventeen)
+    random.shuffle(females)
+    platoon_list = divide_into_platoons(thirteen, fifteen, seventeen, females)
+    
+    #print(platoon_list)
+    # Write to xlsx, dividing the lists into their own sheets.
+    with xlsxwriter.Workbook('Platoon List.xlsx') as workbook:
+      for platoon in platoon_list:
+          worksheet = workbook.add_worksheet()
+          
+          for row_num, data in enumerate(platoon):
+            worksheet.write_row(row_num, 0, data)
+    print(f'Job is done! Look for a file named "Platoon List.xlsx" inside the folder containing the file. ')
+   
