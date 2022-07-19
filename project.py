@@ -57,3 +57,38 @@ def divide_into_platoons(thirteen, fifteen, seventeen, females):
     
   platoons = int(input('How many Basic Training Platoons?\n'))
     
+    # Our pattern matching for platoon numbers
+  match platoons:
+    case 1:
+      platoon_list.append(platoon_first)
+    case 2:
+      for i in range(0, 2):
+        platoon_list.append(max_list[i])
+    case 3:
+      for i in range(0, 3):
+        platoon_list.append(max_list[i])
+    case 4:
+      for i in range(0, 4):
+        platoon_list.append(max_list[i])
+    case 5:
+      for i in range(0, 5):
+        platoon_list.append(max_list[i])
+    case 6:
+      for i in range(0, 6):
+        platoon_list.append(max_list[i])
+    case 7:
+      for i in range(0, 7):
+        platoon_list.append(max_list[i])
+    case 8:
+      for i in range(0, 8):
+        platoon_list.append(max_list[i])
+    #case 9:
+      #for i in range(0, 9):
+        #platoon_list.append(max_list[i])
+    #case 10:
+      #for i in range(0, 10):
+        #platoon_list.append(max_list[i])
+    case _:
+      print('Number not supported, try again.')
+      #print(max_list)
+    
