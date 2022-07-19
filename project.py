@@ -92,3 +92,91 @@ def divide_into_platoons(thirteen, fifteen, seventeen, females):
       print('Number not supported, try again.')
       #print(max_list)
     
+    # Iterate through current ages and assign the males to the platoons, clearing list as we go.
+    #Ryan Bradley assisted with this portion.  Thanks Ryan!!
+    #  print('Males...')
+  while thirteen != []:
+    try:
+      if thirteen == []:
+        pass
+      else:
+        for set_platoon in platoon_list:
+          set_platoon.append(thirteen[0])
+          thirteen.pop(0)
+    except:
+      pass
+  while fifteen != []:
+    try:
+      if fifteen == []:
+        pass
+      else:
+        for set_platoon in platoon_list:
+          set_platoon.append(fifteen[0])
+          fifteen.pop(0)
+    except:
+      pass
+  while seventeen != []:
+    try:
+      if seventeen == []:
+        pass
+      else:
+        for set_platoon in platoon_list:
+          set_platoon.append(seventeen[0])
+          seventeen.pop(0)
+    except:
+        pass
+
+    # Redo the lists, this time with the females
+    # Iterate through each row, and add to the appropriate lists
+    for row in females:
+      if row[2] == 'Age':
+        pass
+      elif int(row[2]) == 13 or int(row[2]) == 14:
+        thirteen.append(row)
+      elif int(row[2]) == 15 or int(row[2]) == 16:
+        fifteen.append(row)
+      elif int(row[2]) == 17:        
+        seventeen.append(row)
+        
+      # Redo platoon assignment for the females
+      # Reshuffle to add more randomness
+      random.shuffle(thirteen)
+      random.shuffle(fifteen)
+      random.shuffle(seventeen)
+
+     # Iterate through each age list. When a name is put into a platoon, remove it from the list
+    while thirteen != []:
+      try:
+        if thirteen == []:
+          pass
+        else:
+          for set_platoon in platoon_list:
+            set_platoon.append(thirteen[0])
+            thirteen.pop(0)
+      except:
+        pass
+      
+    while fifteen != []:
+      try:
+        if fifteen == []:
+          pass
+        else:
+          for set_platoon in platoon_list:
+            set_platoon.append(fifteen[0])
+            fifteen.pop(0)
+      except:
+        pass
+      
+    while seventeen != []:
+      try:
+        if seventeen == []:
+          pass
+        else:
+          for set_platoon in platoon_list:
+            set_platoon.append(seventeen[0])
+            seventeen.pop(0)
+      except:
+        pass
+   
+    #print(females)  
+    return platoon_list
