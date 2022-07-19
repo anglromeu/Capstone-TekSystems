@@ -1,0 +1,11 @@
+Import libraries
+
+openpyxl
+pandas as pd
+xlrd
+os
+csv
+re # regex may not be needed
+random
+from time import sleep
+xlsxwriter
