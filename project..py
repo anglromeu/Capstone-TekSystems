@@ -247,5 +247,5 @@ if __name__ == "__main__":
           
           for row_num, data in enumerate(platoon):
             worksheet.write_row(row_num, 0, data)
-    print(f'Job is done! Look for a file named "Platoon List.xlsx" inside the folder containing the file. ')
+    print(f'Job is done! Look for a file named "Platoon List.xlsx" inside the folder containing the original file. ')
    
